@@ -1,0 +1,21 @@
+server:
+  port: 8084
+
+spring:
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: rating-service
+            uri: lb://rating-service
+            predicates:
+              - Path=/ratings/**
+          - id: HOTEL-SERVICE
+            uri: lb://HOTEL-SERVICE
+            predicates:
+              - Path=/hotels/**
+          - id: USER-SERVICE
+            uri: lb://USER-SERVICE
+            predicates:
+              - Path=/users/**
+
